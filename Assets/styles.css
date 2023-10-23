@@ -3,41 +3,48 @@
     --mimosa: #F3CD74;
     --cyan: #71F8FF;
     --dark-blue: #1C2143;
-    --color-trans: background-image:
-    linear-gradient(
-      var(--teal), var(--dark-blue)
-    );
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height:100%;
-    width: 100%;
-    background-color: #1C2143;
+    background-image: linear-gradient(
+        var(--teal), var(--dark-blue)
+      );
 }
 
+/* CSS for header */
 h1 {
-    margin: 50px auto;
+    margin: 20px;
 }
-
 .header {
-    text-align: center;
-    height: 125px;
-    color: white;
-    border-bottom: #5DCAD1 solid 1px;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+    width: 80%;
 }
 
-.searchCol {
+/* Splits containers */
+.split {
+    border: 1px solid red;
+    width: 80%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    margin: auto 100px;
+}
+
+/* CSS for List container and options */
+.list-container {
+    border: 1px solid pink;
+    width: 200px;
     display: flex;
     flex-direction: column;
-    width: 20%;
-    margin: 20px 20px;
-    padding: 10px;
-    color: white;
-    border: 1px solid red;
+    align-items: center;
+    max-height: 500px;
 }
 
-.searchBar {
-    border: 1px solid red;
+input {
+    margin-bottom: 10px;
+}
+
+select option {
+    width: 125px;
 }
