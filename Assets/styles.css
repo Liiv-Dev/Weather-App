@@ -9,6 +9,8 @@ body {
     background-image: linear-gradient(
         var(--teal), var(--dark-blue)
       );
+      height: 100vh;
+      width: 100vw;
 }
 
 /* CSS for header */
@@ -18,7 +20,7 @@ h1 {
 .header {
     margin: 0 auto;
     border-bottom: 1px solid white;
-    width: 80%;
+    width: 50%;
 }
 
 /* Splits containers */
@@ -28,23 +30,31 @@ h1 {
     height: 600px;
     display: flex;
     flex-direction: row;
-    margin: auto 100px;
+    margin: auto;
 }
 
 /* CSS for List container and options */
 .list-container {
     border: 1px solid pink;
-    width: 200px;
+    width: 250px;
+    max-height: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 input {
     margin-bottom: 10px;
+    width: 200px;
 }
 
 select option {
     width: 125px;
+}
+
+.city-container {
+    border: 1px solid red;
+    height: 250px;
 }
