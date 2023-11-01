@@ -28,8 +28,6 @@ h1 {
     border: 1px solid red;
     width: 80%;
     height: 600px;
-    display: flex;
-    flex-direction: row;
     margin: auto;
 }
 
@@ -53,9 +51,17 @@ button {
     margin: 4px;
     border: 0;
     border-radius: 15px;
+    cursor: pointer;
 }
 
-.city-container {
+.current-container {
     border: 1px solid red;
-    height: 250px;
+    height: 30%;
+    width: 800px;
+}
+
+.forcast-container {
+    border: 1px solid red;
+    height: 60%;
+    width: 800px;
 }

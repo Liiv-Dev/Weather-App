@@ -18,22 +18,28 @@
         </div>
 
         <!--container to split list and images-->
-        <div class="split">
+        <div class="split is-flex is-flex-direction-row">
             
         <!--List and seach container-->
-        <div class="list-container is-flex-direction-column has-text-centered">
-            
+        <div class="list-container is-flex is-flex-direction-column has-text-centered">
+            <input id="userSearch" class="input" type="text" placeholder="Search">
         </div>
 
        
-        <!--Current City display-->
-        <div id="city-weather" class="city-container has-text-white">
-            <div>
+        <!--Current City and forecast display-->
+        <div class="city-container has-text-white is-flex is-flex-direction-column is-justify-content-center">
+
+            <div class='current-container mb-4'>
                 <h3 id="clicked-city"> <span><img alt="sun/moon"></span></h3>
-                <p>Temp</p>
-                <p>Wind</p>
-                <p>Humidy</p>
-            </div>    
+                <p id="temp">Temp</p>
+                <p id="wind">Wind</p>
+                <p id="humidy">Humidy</p>
+            </div> 
+            
+            <div class="forcast-container">
+                <p>forecast container</p>
+            </div>
+
         </div>
     
 
