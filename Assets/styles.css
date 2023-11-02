@@ -20,12 +20,11 @@ h1 {
 .header {
     margin: 0 auto;
     border-bottom: 1px solid white;
-    width: 50%;
+    width: 80%;
 }
 
 /* Splits containers */
 .split {
-    border: 1px solid red;
     width: 80%;
     height: 600px;
     margin: auto;
@@ -47,21 +46,33 @@ h1 {
 }
 
 button {
-    width: 125px;
+    width: 150px;
     margin: 4px;
     border: 0;
     border-radius: 15px;
     cursor: pointer;
 }
 
+.city-container {
+    width: 80%;
+}
+
 .current-container {
-    border: 1px solid red;
     height: 30%;
-    width: 800px;
+    width: 80%;
 }
 
 .forcast-container {
-    border: 1px solid red;
     height: 60%;
-    width: 800px;
+    width: 95%;
+}
+
+.columns {
+    border: 1px red solid
+}
+
+.weekday {
+    border: 1px solid red;
+    height: 300px;
+    width: 150px;
 }
