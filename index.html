@@ -1,20 +1,28 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Whats The Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="Assets/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
   </head>
     <body>
     <section class="hero is-fullheight">
 
         <!--Header-->
-        <div class="header has-text-centered is-size-2 has-text-white">
-            <h1>Weather</h1>
+        <div class="header has-text-centered is-size-1 has-text-white">
+            <h1>Whats The Weather</h1>
         </div>
 
         <!--container to split list and images-->
@@ -29,19 +37,57 @@
         <!--Current City and forecast display-->
         <div class="city-container has-text-white is-flex is-flex-direction-column is-justify-content-center">
 
-            <div class='current-container mb-4'>
-                <h3 id="clicked-city"> <span><img alt="sun/moon"></span></h3>
-                <p id="temp">Temp</p>
-                <p id="wind">Wind</p>
-                <p id="humidy">Humidy</p>
+            <div class='current-container has-text-centered'>
+                <h3 id="selected-city" class="mb-2 is-size-2 has-text-weight-bold">City <span class="currentDate"></span> </h3>
+                <p id="temp" class="is-size-4">Temp</p>
+                <p id="wind" class="is-size-4">Wind</p>
+                <p id="humidity" class="is-size-4">Humidy</p>
             </div> 
             
-            <div class="forcast-container">
-                <p>forecast container</p>
+            <!--City Weekly forecast-->
+            <div class="forcast-container is-flex is-justify-content-center is-align-items-center ">
+
+                <div class="columns is-mobile mr-6 has-text-centered">
+                    <div class="column weekday has-text-centered">
+                        <h3 id="m-f-0" class="m-3 is-size-4 is-underlined has-text-weight-bold"></h3>
+                        <div id="weather-icon-0"></div>
+                        <p id="weeklyTemp-0" class="m-3"></p>
+                        <p id="weeklyWind-0" class="m-3"></p>
+                        <p id="weeklyHumidity-0" class="m-3"></p>
+                    </div>
+                    <div class="column weekday">
+                        <h3 id="m-f-1" class="m-3 is-size-4 is-underlined has-text-weight-bold"></h3>
+                        <div id="weather-icon-1"></div>
+                        <p id="weeklyTemp-1" class="m-3"></p>
+                        <p id="weeklyWind-1" class="m-3"></p>
+                        <p id="weeklyHumidity-1" class="m-3"></p>
+                    </div>
+                    <div class="column weekday">
+                        <h3 id="m-f-2" class="m-3 is-size-4 is-underlined has-text-weight-bold"></h3>
+                        <div id="weather-icon-2"></div>
+                        <p id="weeklyTemp-2" class="m-3"></p>
+                        <p id="weeklyWind-2" class="m-3"></p>
+                        <p id="weeklyHumidity-2" class="m-3"></p>
+                    </div>
+                    <div class="column weekday">
+                        <h3 id="m-f-3" class="m-3 is-size-4 is-underlined has-text-weight-bold"></h3>
+                        <div id="weather-icon-3"></div>
+                        <p id="weeklyTemp-3" class="m-3"></p>
+                        <p id="weeklyWind-3" class="m-3"></p>
+                        <p id="weeklyHumidity-3" class="m-3"></p>
+                    </div>
+                    <div class="column weekday">
+                        <h3 id="m-f-4" class="m-3 is-size-4 is-underlined has-text-weight-bold"></h3>
+                        <div id="weather-icon-4"></div>
+                        <p id="weeklyTemp-4" class="m-3"></p>
+                        <p id="weeklyWind-4" class="m-3"></p>
+                        <p id="weeklyHumidity-4" class="m-3"></p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-    
 
 
         </div>
