@@ -39,10 +39,10 @@ $('#userSearch').on('input', function() {
         const apiKey = 'd9593fee53a8685d50e5bbf150c861b9';
 
         // API URL for forecast weather
-        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&mode=json&units=metric&appid=${apiKey}`
         
         // API URL for current weather
-        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric&appid=${apiKey}`
         
         // Fetch current weather data
 $.ajax({
@@ -54,13 +54,17 @@ $.ajax({
         const temperature = response.main.temp; // Note: convert C to F
         const windSpeed = response.wind.speed;
         const humidity = response.main.humidity;
+
+        // Converts temperature from Celsius to Fahrenheit
+        const temperatureFahrenheit = (temperature * 9/5) + 32;
+
         
         // Get current date using Day.js
         const currentDate = dayjs().format('MMMM D, YYYY'); 
         
         // Update page with weather data and current date
         $('#selected-city').text(`${cityName} - ${currentDate}`);
-        $('#temp').text(`Temperature: ${temperature}°C`);
+        $('#temp').text(`Temperature: ${temperatureFahrenheit.toFixed(2)}°F`);
         $('#wind').text(`Wind Speed: ${windSpeed} m/s`);
         $('#humidity').text(`Humidity: ${humidity}%`);
     },
@@ -69,6 +73,28 @@ $.ajax({
         console.error('Error fetching current weather:', error);
     }
 });
+
+const weatherIcons = {
+    '01d': 'fa-sun',   // clear sky (day)
+    '01n': 'fa-moon',   // clear sky (night)
+    '02d': 'fa-cloud-sun',   // few clouds (day)
+    '02n': 'fa-cloud-moon',   // few clouds (night)
+    '03d': 'fa-cloud',   // scattered clouds (day)
+    '03n': 'fa-cloud',   // scattered clouds (night)
+    '04d': 'fa-cloud',   // broken clouds (day)
+    '04n': 'fa-cloud',   // broken clouds (night)
+    '09d': 'fa-cloud-showers-heavy',   // shower rain (day)
+    '09n': 'fa-cloud-showers-heavy',   // shower rain (night)
+    '10d': 'fa-cloud-rain',   // rain (day)
+    '10n': 'fa-cloud-rain',   // rain (night)
+    '11d': 'fa-bolt',   // thunderstorm (day)
+    '11n': 'fa-bolt',   // thunderstorm (night)
+    '13d': 'fa-snowflake',   // snow (day)
+    '13n': 'fa-snowflake',   // snow (night)
+    '50d': 'fa-smog',   // mist (day)
+    '50n': 'fa-smog'    // mist (night)
+};
+
 
 // Fetch forecast data
 $.ajax({
@@ -85,19 +111,35 @@ $.ajax({
         for (let i = 0; i < 5; i++) {
             // Calculate the date for the next day
             const nextDate = currentDate.add(i, 'day');
-            const formattedDate = nextDate.format('MM/DD/YYYY'); // Format the date as MM/DD/YYYY
+            const formattedDate = nextDate.format('MM/DD/YYYY'); // Formatted the date as MM/DD/YYYY
             
             // Retrieve forecast data for the corresponding day
             const forecastData = dailyForecasts[i];
             const temperature = forecastData.main.temp;
             const windSpeed = forecastData.wind.speed;
             const humidity = forecastData.main.humidity;
+
+            // Converts temperature into Fahrenheit
+            const temperatureFahrenheit = (temperature * 9/5) + 32;
+
             
             // Update forecast cards with daily forecast data
             $(`#m-f-${i}`).text(formattedDate);
-            $(`#weeklyTemp-${i}`).text(`Temperature: ${temperature}°C`);
+            $(`#weeklyTemp-${i}`).text(`Temperature: ${temperatureFahrenheit.toFixed(2)}°F`);
             $(`#weeklyWind-${i}`).text(`Wind Speed: ${windSpeed} m/s`);
             $(`#weeklyHumidity-${i}`).text(`Humidity: ${humidity}%`);
+
+            // Get weather condition code for the day
+            const weatherCode = forecastData.weather[0].icon;
+            
+            // Get corresponding weather icon class
+            const weatherIconClass = weatherIcons[weatherCode] || 'fa-question'; // Default to question mark if icon is not found
+            
+            // Create an icon element with the weather icon class
+            const iconElement = $(`<i class="fa ${weatherIconClass}"></i>`);
+
+            // Update the DOM element with the corresponding index
+            $(`#weather-icon-${i}`).empty().append(iconElement);
         }
     },
     error: function(error) {

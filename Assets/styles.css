@@ -65,6 +65,7 @@ button {
 .current-container {
     height: 30%;
     width: 80%;
+    overflow: scroll;
 }
 
 .currentDate {
@@ -86,5 +87,10 @@ button {
     padding: 20px;
     margin: 10px;
     text-align: center;
+  }
+
+  .icon {
+    height: 60px;
+    width: 60px;
   }
   
